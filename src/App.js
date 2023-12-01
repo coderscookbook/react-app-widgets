@@ -4,6 +4,7 @@ import Map from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
 
 function App() {
+  // Create ref objects
   const mapDiv = useRef()
   const map = useRef()
   const mapView = useRef()
@@ -16,9 +17,10 @@ function App() {
     mapView.current = new MapView({
       map: map.current
     })
-
+    
+    // console.log("Map.current: ", map.current)
     mapView.current.container = mapDiv.current
-  }, [])
+  }, []) // empty dependency array means this effect runs once after the initial render
   
   return (
     <div 
