@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useRef } from 'react';
+import Map from '@arcgis/core/Map'
+import MapView from '@arcgis/core/views/MapView'
 
 function App() {
+  const mapDiv = useRef()
+  const map = useRef()
+  const mapView = useRef()
+
+  useEffect(() => {
+    map.current = new Map({
+      basemap: 'streets-vector'
+    })
+
+    mapView.current = new MapView({
+      map: map.current
+    })
+
+    mapView.current.container = mapDiv.current
+  }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div 
+      className="App"
+      ref={mapDiv}
+      style={{
+        height: '100vh',
+        width: '100vw'
+      }}
+    >
     </div>
   );
 }
