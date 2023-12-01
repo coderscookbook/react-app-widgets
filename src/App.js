@@ -20,7 +20,6 @@ function App() {
       map: map.current
     })
     
-    // console.log("Map.current: ", map.current)
     mapView.current.container = mapDiv.current
 
     // Install CustomWidget into ArcGIS map
@@ -40,7 +39,7 @@ function App() {
       }}
     >
     </div>
-  );
+  )
 }
 
 export default App;
